@@ -3,12 +3,13 @@ var     eMS = new emitter();
 var    sent = [[]];
 var   redis = require('redis');
 
-var sentinels1 = { 26379:"127.0.0.1", 26380:"127.0.0.1" };
-var sentinels2 = { 26379:"127.0.0.1", 26380:"127.0.0.1" }; // track same set twice if utile
+//var sentinels1 = { 26379:"127.0.0.1", 26380:"127.0.0.1", 26381:"127.0.0.1" };
+//var sentinels2 = { 26379:"127.0.0.1", 26380:"127.0.0.1", 26381:"127.0.0.1" }; // track same set twice if utile
 //var sentinelsm = { port:"ip", nextport:"nextip", "...":"..." };
 //  :
 //  : redis sentinels
 //  :
+var sentinels1 = { 26379:"127.0.0.1" }; // Initial Test 1 Configuration
 var sents = [
 sentinels1,sentinels1,sentinels1,sentinels1,sentinels1,sentinels1,sentinels1,sentinels1,sentinels1,sentinels1,
 ];
