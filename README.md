@@ -49,7 +49,11 @@ Provoke impact
 
 Stop .... Master
 
-Result: tracksen receives full subscriptions from 1000 sentinels, a single sentinel submitts these.
+Result: tracksen receives full subscriptions from 1000 sentinels, a single sentinel submitts these...
+
+... in other words: a sentinel scatters full subscriptions to 1000 tracksens, a single tracksen gathers these.
+
+Things are shaping up well.
 
 NEXT:
 
