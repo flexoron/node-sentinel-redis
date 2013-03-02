@@ -49,6 +49,8 @@ Provoke impact
 
 Stop .... Master
 
+Result: tracksen receives full subscriptions from 1000 sentinels, a single sentinel submitts these.
+
 NEXT:
 
 Auto-generate test environment.
