@@ -25,9 +25,9 @@ function eMasters(s, j, d1, d2) {
     sl = d2[0][(d2[0].indexOf('num-slaves'))+1];
     console.log("aMaster:"+na+":"+mh+":"+mp+":"+sl);
     if (sl > 0) {
-       s[j+2] = ['slaves', na]; getMSI(s, j, 1);
+       s[j+2] = ['slaves', na]; getMSI(s, j, 0);
     } else {
-       getMSI(s, j, 0);
+       getMSI(s, j, -1);
     }
 }
 function eSlaves(s, j, d1, d2) {
@@ -42,50 +42,50 @@ function eSlaves(s, j, d1, d2) {
            console.log("aSlave:"+na+":"+mh+":"+mp+":"+st);
        }
     }
-    getMSI(s, j, 0);
+    getMSI(s, j, -1);
 }
-function eReset(s, j, d1, d2)               { getMSI(s, j, 0); }
-function eIsMasterDownByAddr(s, j, d1, d2)  { getMSI(s, j, 0); }
-function eGetMasterAddrByName(s, j, d1, d2) { getMSI(s, j, 0); }
+function eReset(s, j, d1, d2)               { getMSI(s, j, -1); }
+function eIsMasterDownByAddr(s, j, d1, d2)  { getMSI(s, j, -1); }
+function eGetMasterAddrByName(s, j, d1, d2) { getMSI(s, j, -1); }
 
 function getMSI(s, j, f)      { s[j+1]=f;     s[j].psubscribe('*');    }
-function onPsubscribe(s, j)   { if (s[j+1]) { s[j].punsubscribe();  }  }
-function onPunsubscribe(s, j) { if (s[j+1]) { msCmd(s, j, s[j+2]);  }  }
-function onConnect(s, j)      { s[j+2] = ['masters']; getMSI(s, j, 1); }
-function onClose(s, j)        { console.log("onClose:");  }
-function onIdle(s, j)         { console.log("onIdle:");   }
-function onEnd(s, j)          { console.log("onEnd:");    }
-function onDrain(s, j)        { console.log("onDrain:");  }
-function onReady(s, j)        { console.log("onReady:");  }
+function onPsubscribe(s, j)   { if (!s[j+1]) { s[j].punsubscribe();  } }
+function onPunsubscribe(s, j) { if (!s[j+1]) { msCmd(s, j, s[j+2]);  } }
+function onConnect(s, j)      { s[j+2] = ['masters']; getMSI(s, j, 0); }
+function onReconnecting(s, j) { ; } //console.log("onReconn:"); }
+function onClose(s, j)        { ; } //console.log("onClose:");  }
+function onIdle(s, j)         { ; } //console.log("onIdle:");   }
+function onEnd(s, j)          { ; } //console.log("onEnd:");    }
+function onDrain(s, j)        { ; } //console.log("onDrain:");  }
+function onReady(s, j)        { ; } //console.log("onReady:");  }
 function onError(s, j, e)     { console.log("BREAK:"+e);  }
-function onReconnecting(s, j) { console.log("onReconn:"); }
 function onPmessage(s, j, c, m) {
  eMS.emit(((c.replace(/^\-/,'_')).replace(/^\+/,'x')).substr(0,4), s, j, c, m);
 }
-function _til(s, j, c, m) { console.log(c+":"+m); }
-function _sdo(s, j, c, m) { console.log(c+":"+m); }
-function _odo(s, j, c, m) { console.log(c+":"+m); }
-function _dup(s, j, c, m) { console.log(c+":"+m); }
-function _cmd(s, j, c, m) { console.log(c+":"+m); }
-function _sla(s, j, c, m) { console.log(c+":"+m); }
-function _scr(s, j, c, m) { console.log(c+":"+m); }
-function _pub(s, j, c, m) { console.log(c+":"+m); }
-function _fai(s, j, c, m) { console.log(c+":"+m); }
-function _pro(s, j, c, m) { console.log(c+":"+m); }
-function xtil(s, j, c, m) { console.log(c+":"+m); }
-function xsdo(s, j, c, m) { console.log(c+":"+m); }
-function xodo(s, j, c, m) { console.log(c+":"+m); }
-function xreb(s, j, c, m) { console.log(c+":"+m); }
-function xsen(s, j, c, m) { console.log(c+":"+m); }
-function xres(s, j, c, m) { console.log(c+":"+m); }
-function xswi(s, j, c, m) { console.log(c+":"+m); }
-function xsel(s, j, c, m) { console.log(c+":"+m); }
-function xpro(s, j, c, m) { console.log(c+":"+m); }
-function xpub(s, j, c, m) { console.log(c+":"+m); }
+function _til(s, j, c, m) { ; }
+function _sdo(s, j, c, m) { ; }
+function _odo(s, j, c, m) { ; }
+function _dup(s, j, c, m) { ; }
+function _cmd(s, j, c, m) { ; }
+function _sla(s, j, c, m) { ; }
+function _scr(s, j, c, m) { ; }
+function _pub(s, j, c, m) { ; }
+function _fai(s, j, c, m) { ; }
+function _pro(s, j, c, m) { ; }
+function xtil(s, j, c, m) { ; }
+function xsdo(s, j, c, m) { ; }
+function xreb(s, j, c, m) { ; }
+function xsen(s, j, c, m) { ; }
+function xres(s, j, c, m) { ; }
+function xsel(s, j, c, m) { ; }
+function xpub(s, j, c, m) { ; }
+function xscr(s, j, c, m) { ; }
+function xred(s, j, c, m) { ; }
+function xodo(s, j, c, m) { ; }
 function xsla(s, j, c, m) { console.log(c+":"+m); }
-function xscr(s, j, c, m) { console.log(c+":"+m); }
-function xred(s, j, c, m) { console.log(c+":"+m); }
-function xfai(s, j, c, m) { console.log(c+":"+m); }
+function xpro(s, j, c, m) { console.log(c+":"+m); }
+function xswi(s, j, c, m) { console.log(s[j+2]+c+":"+m); s[j+1] = -1; }
+function xfai(s, j, c, m) { s[j+2] = c; if (!++s[j+1]) console.log(s[j+2]+":"+m); }
 
 function initS(s,ss) {
     var p = Object.keys(ss);
